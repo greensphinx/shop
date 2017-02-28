@@ -9,6 +9,11 @@ return array(
     'category/([a-z]+)' => 'category/category/$1',  // actionCategory в CategoryController
 
     'user/register' => 'user/register',
+    'user/login' => 'user/login',
+    'user/logout' => 'user/logout',
+
+    'accaunt/edit' => 'accaunt/edit',
+    'accaunt' => 'accaunt/index',
 
     '' => 'page/index', // actionIndex в PageController
     

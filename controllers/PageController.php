@@ -42,13 +42,6 @@
                 $productTv = Product::getProducts(5,3);
 
 
-
-
-
-
-
-
-
                 require_once(ROOT . DS . 'views' . DS . 'page' . DS . 'index.php');
 
                 return true;

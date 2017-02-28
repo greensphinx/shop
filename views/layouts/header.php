@@ -39,9 +39,15 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
+                            <?php if(User::Guest()) { ?>
+                            <li><a href="/user/login/"><i class="fa fa-lock"></i> Вход</a></li>
+                            <li><a href="/user/register/"><i class="fa fa-users"></i> Регистрация</a></li>
+                            <?php } else { ?>
                             <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Аккаунт</a></li>
-                            <li><a href="#"><i class="fa fa-lock"></i> Вход</a></li>
+                            <li><a href="/accaunt/"><i class="fa fa-user"></i> Аккаунт</a></li>
+                            <li><a href="/user/logout/"><i class="fa fa-unlock"></i> Выход</a></li>
+                            <?php } ?>
+
                         </ul>
                     </div>
                 </div>
