@@ -4,7 +4,7 @@
 
 
     class PageController
-        {
+    {
 
             public function actionIndex()
             {
@@ -47,4 +47,16 @@
                 return true;
             }
 
-        }
+//        public function actionContact()
+//        {
+//            $mail = 'd_zelinsky@list.ru';
+//            $subject = 'тема письма';
+//            $message = 'Содержимое письма';
+//            $result = mail($mail, $subject, $message);
+//
+//            var_dump($result);
+//
+//            die;
+//        }
+
+    }

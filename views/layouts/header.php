@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="/"><img src="/templates/images/home/logo.png" alt="" /></a>
+                        <a href="/"><img src="/uploads/logo/logo.png" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -43,7 +43,7 @@
                             <li><a href="/user/login/"><i class="fa fa-lock"></i> Вход</a></li>
                             <li><a href="/user/register/"><i class="fa fa-users"></i> Регистрация</a></li>
                             <?php } else { ?>
-                            <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                            <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина</a>(<?=Cart::countProductsInCart()?>)</li>
                             <li><a href="/accaunt/"><i class="fa fa-user"></i> Аккаунт</a></li>
                             <li><a href="/user/logout/"><i class="fa fa-unlock"></i> Выход</a></li>
                             <?php } ?>
