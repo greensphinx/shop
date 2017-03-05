@@ -38,7 +38,7 @@
                                         <?php } ?>
 
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                     </div>
                                     <?php if($product['stock']) { ?>

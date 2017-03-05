@@ -45,10 +45,7 @@
                                             <span><?=$oneProduct[0]['price']?> грн.</span>
                                             <label>Количество:</label>
                                             <input type="text" value="1" />
-                                            <button type="button" class="btn btn-fefault cart">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                В корзину
-                                            </button>
+                                            <a href="#" data-id="<?=$oneProduct[0]['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         </span>
                                 <p><b>Производитель:</b> <?=$oneProduct[0]['brand']?></p>
                             </div><!--/product-information-->

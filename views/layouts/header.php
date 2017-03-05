@@ -22,6 +22,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/templates/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/templates/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/templates/images/ico/apple-touch-icon-57-precomposed.png">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 </head><!--/head-->
 
 <body>
@@ -43,9 +44,10 @@
                             <li><a href="/user/login/"><i class="fa fa-lock"></i> Вход</a></li>
                             <li><a href="/user/register/"><i class="fa fa-users"></i> Регистрация</a></li>
                             <?php } else { ?>
-                            <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина</a>(<?=Cart::countProductsInCart()?>)</li>
                             <li><a href="/accaunt/"><i class="fa fa-user"></i> Аккаунт</a></li>
                             <li><a href="/user/logout/"><i class="fa fa-unlock"></i> Выход</a></li>
+                            <li><a href="/cart/"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                            <span id="cart-count">(<?=Cart::countProductsInCart()?>)</span>
                             <?php } ?>
 
                         </ul>

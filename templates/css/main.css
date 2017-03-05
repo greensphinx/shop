@@ -136,6 +136,11 @@ a#scrollUp i{
 	background:#CE3C2D;
 }
 
+.header-middle
+{
+  position: fixed !important;
+}
+
 .header-middle .container .row {
   border-bottom: 1px solid #f5f5f5;
   margin-left: 0;

@@ -34,7 +34,7 @@
                                         <img src="/uploads/<?=$stock_product['img']?>" alt="photo" />
                                         <h2><s><?php $percent = $stock_product['price'] * 10/100; echo $stock_product['price'] + $percent; ?></s> грн.</h2>
                                         <h2><?=$stock_product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$stock_product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$stock_product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$stock_product['id']?>"><?=$stock_product['title']?></a></p>
                                         <p><?=$stock_product['features']?></p>
                                     </div>
@@ -51,7 +51,7 @@
                                     <div class="productinfo text-center">
                                         <img src="/uploads/<?=$product['img']?>" alt="photo" />
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                         <p><?=$product['features']?></p>
                                     </div>
@@ -71,7 +71,7 @@
                                         <img src="/uploads/<?=$product['img']?>" alt="photo" />
                                         <h2><s><?php $percent = $product['price'] * 10/100; echo $product['price'] + $percent; ?></s> грн.</h2>
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                         <p><?=$product['features']?></p>
                                     </div>
@@ -88,7 +88,7 @@
                                     <div class="productinfo text-center">
                                         <img src="/uploads/<?=$product['img']?>" alt="photo" />
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                         <p><?=$product['features']?></p>
                                     </div>
@@ -108,7 +108,7 @@
                                         <img src="/uploads/<?=$product['img']?>" alt="photo" />
                                         <h2><s><?php $percent = $product['price'] * 10/100; echo $product['price'] + $percent; ?></s> грн.</h2>
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                         <p><?=$product['features']?></p>
                                     </div>
@@ -125,7 +125,7 @@
                                     <div class="productinfo text-center">
                                         <img src="/uploads/<?=$product['img']?>" alt="photo" />
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                         <p><?=$product['features']?></p>
                                     </div>
@@ -145,7 +145,7 @@
                                         <img src="/uploads/<?=$product['img']?>" alt="photo" />
                                         <h2><s><?php $percent = $product['price'] * 10/100; echo $product['price'] + $percent; ?></s> грн.</h2>
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                         <p><?=$product['features']?></p>
                                     </div>
@@ -162,7 +162,7 @@
                                     <div class="productinfo text-center">
                                         <img src="/uploads/<?=$product['img']?>" alt="photo" />
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                         <p><?=$product['features']?></p>
                                     </div>
@@ -182,7 +182,7 @@
                                         <img src="/uploads/<?=$product['img']?>" alt="photo"/>
                                         <h2><s><?php $percent = $product['price'] * 10/100; echo $product['price'] + $percent; ?></s> грн.</h2>
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                         <p><?=$product['features']?></p>
                                     </div>
@@ -199,7 +199,7 @@
                                     <div class="productinfo text-center">
                                         <img src="/uploads/<?=$product['img']?>" alt="photo" />
                                         <h2><?=$product['price']?> грн.</h2>
-                                        <a href="/cart/add/<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?=$product['id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         <p><a href="/product/<?=$product['id']?>"><?=$product['title']?></a></p>
                                         <p><?=$product['features']?></p>
                                     </div>
