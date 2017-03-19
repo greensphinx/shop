@@ -242,13 +242,14 @@
                             </div>
                         </div>
                         <?php } ?>
+                        <a class="left recommended-item-control" id="prev" href="#recommended-item-carousel" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="right recommended-item-control" id="next" href="#recommended-item-carousel" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
                     </div>
-                    <a class="left recommended-item-control" id="prev" href="#recommended-item-carousel" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a class="right recommended-item-control" id="next" href="#recommended-item-carousel" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
+
 
                 </div><!--/recommended_items-->
             </div>

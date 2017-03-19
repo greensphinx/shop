@@ -10,9 +10,9 @@
             $result = false;
 
             if(isset($_POST['submit'])){
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
+                $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+                $email = htmlspecialchars($_POST['email'], ENT_QUOTES);
+                $password = htmlspecialchars($_POST['password'], ENT_QUOTES);
 
                 $errors = false; // массив с ошибками
 
@@ -49,8 +49,8 @@
             $password = '';
 
             if(isset($_POST['submit'])){
-                $email = $_POST['email'];
-                $password = $_POST['password'];
+                $email = htmlspecialchars($_POST['email'], ENT_QUOTES);
+                $password = htmlspecialchars($_POST['password'], ENT_QUOTES);
 
                 $errors = false;
 

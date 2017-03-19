@@ -58,8 +58,8 @@
 
                 if (isset($_POST['submit'])) {
 
-                    $userEmail = $_POST['userEmail'];
-                    $userText = $_POST['userText'];
+                    $userEmail = htmlspecialchars($_POST['userEmail'], ENT_QUOTES);
+                    $userText = htmlspecialchars($_POST['userText'], ENT_QUOTES);
 
                     $errors = false;
 

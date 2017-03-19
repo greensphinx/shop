@@ -231,4 +231,9 @@
             // Иначе возвращаем 0
             return 0;
         }
+
+        public static function updateProductById($id)
+        {
+
+        }
     }

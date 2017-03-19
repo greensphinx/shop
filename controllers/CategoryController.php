@@ -1,7 +1,5 @@
 <?php
 
-
-    //include (ROOT.DS.'components'.DS.'Pagination.php');
     class CategoryController
     {
         public static function actionCategory($category_alias, $page = 1)

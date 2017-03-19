@@ -44,17 +44,17 @@
             if (isset($_POST['submit'])) {
                 // Если форма отправлена
                 // Получаем данные из формы
-                $options['title'] = $_POST['title'];
-                $options['features'] = $_POST['features'];
-                $options['description'] = $_POST['description'];
-                $options['price'] = $_POST['price'];
-                $options['img'] = $_POST['img'];
-                $options['stock'] = $_POST['stock'];
-                $options['brand'] = $_POST['brand'];
-                $options['keywords'] = $_POST['keywords'];
-                $options['visible'] = $_POST['visible'];
-                $options['product_type'] = $_POST['product_type'];
-                $options['category_id'] = $_POST['category_id'];
+                $options['title'] = htmlspecialchars($_POST['title'], ENT_QUOTES);
+                $options['features'] = htmlspecialchars($_POST['features'], ENT_QUOTES);
+                $options['description'] = htmlspecialchars($_POST['description'], ENT_QUOTES);
+                $options['price'] = htmlspecialchars($_POST['price'], ENT_QUOTES);
+                $options['img'] = htmlspecialchars($_POST['img'], ENT_QUOTES);
+                $options['stock'] = htmlspecialchars($_POST['stock'], ENT_QUOTES);
+                $options['brand'] = htmlspecialchars($_POST['brand'], ENT_QUOTES);
+                $options['keywords'] = htmlspecialchars($_POST['keywords'], ENT_QUOTES);
+                $options['visible'] = htmlspecialchars($_POST['visible'], ENT_QUOTES);
+                $options['product_type'] = htmlspecialchars($_POST['product_type'], ENT_QUOTES);
+                $options['category_id'] = htmlspecialchars($_POST['category_id'], ENT_QUOTES);
 
                 // Флаг ошибок в форме
                 $errors = false;
@@ -104,17 +104,17 @@
             if (isset($_POST['submit'])) {
                 // Если форма отправлена
                 // Получаем данные из формы редактирования. При необходимости можно валидировать значения
-                $options['title'] = $_POST['title'];
-                $options['features'] = $_POST['features'];
-                $options['description'] = $_POST['description'];
-                $options['price'] = $_POST['price'];
-                $options['img'] = $_POST['img'];
-                $options['stock'] = $_POST['stock'];
-                $options['brand'] = $_POST['brand'];
-                $options['keywords'] = $_POST['keywords'];
-                $options['visible'] = $_POST['visible'];
-                $options['product_type'] = $_POST['product_type'];
-                $options['category_id'] = $_POST['category_id'];
+                $options['title'] = htmlspecialchars($_POST['title'], ENT_QUOTES);
+                $options['features'] = htmlspecialchars($_POST['features'], ENT_QUOTES);
+                $options['description'] = htmlspecialchars($_POST['description'], ENT_QUOTES);
+                $options['price'] = htmlspecialchars($_POST['price'], ENT_QUOTES);
+                $options['img'] = htmlspecialchars($_POST['img'], ENT_QUOTES);
+                $options['stock'] = htmlspecialchars($_POST['stock'], ENT_QUOTES);
+                $options['brand'] = htmlspecialchars($_POST['brand'], ENT_QUOTES);
+                $options['keywords'] = htmlspecialchars($_POST['keywords'], ENT_QUOTES);
+                $options['visible'] = htmlspecialchars($_POST['visible'], ENT_QUOTES);
+                $options['product_type'] = htmlspecialchars($_POST['product_type'], ENT_QUOTES);
+                $options['category_id'] = htmlspecialchars($_POST['category_id'], ENT_QUOTES);
 
                 // Сохраняем изменения
                 if (Product::updateProductById($id, $options)) {
@@ -122,10 +122,10 @@
 
                     // Если запись сохранена
                     // Проверим, загружалось ли через форму изображение
-                    if (is_uploaded_file($_FILES["imп"]["tmp_name"])) {
+                    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
 
                         // Если загружалось, переместим его в нужную папке, дадим новое имя
-                        move_uploaded_file($_FILES["imп"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/products/{$id}.jpg");
+                        move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/uploads/{$id}.jpg");
                     }
                 }
 

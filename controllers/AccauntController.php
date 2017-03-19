@@ -29,8 +29,8 @@
             $result = false;
 
             if (isset($_POST['submit'])) {
-                $name = $_POST['name'];
-                $password = $_POST['password'];
+                $name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+                $password = htmlspecialchars($_POST['password'], ENT_QUOTES);
 
                 $errors = false;
 

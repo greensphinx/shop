@@ -50,7 +50,6 @@
 
         public function actionCheckout()
         {
-
             // левое меню категорий
             $categories = [];
             $categories = Category::getCategories();
@@ -59,9 +58,9 @@
 
             if(isset($_POST['submit'])){
                 // данные из формы
-                $userName = $_POST['userName'];
-                $userPhone = $_POST['userPhone'];
-                $userComment = $_POST['userComment'];
+                $userName = htmlspecialchars($_POST['userName'], ENT_QUOTES);
+                $userPhone = htmlspecialchars($_POST['userPhone'], ENT_QUOTES);
+                $userComment = htmlspecialchars($_POST['userComment'], ENT_QUOTES);
 
                 // валидация
                 $errors = false;
@@ -99,6 +98,7 @@
                         // Очищаем корзину
                         Cart::clear();
                     }
+
                 } else {
                     // если форма заполнена не правильно
                     $productsInCart = Cart::getProducts();
@@ -117,31 +117,34 @@
                 if($productsInCart == false) {
                     // корзина пуста - отправляем на главную
                     header("Location: /");
-                } else {
-                    // если есть товары в корзине - получаем количество товаров и общую стоимость
-                    $productsIds = array_keys($productsInCart);
-                    $products = Product::getProductsByIds($productsIds);
-                    $totalPrice = Cart::getTotalPrice($products);
-                    $totalQuantity = Cart::countProductsInCart();
-
-                    $userName = false;
-                    $userPhone = false;
-                    $userComment = false;
-
-                    // Авторизован ли пользователь?
-                    if(User::Guest()){
-                        // если нет - форма пустая
-                    } else {
-                        // если да - получаем данные пользователя из БД по id
-                        $userId = User::checkLogged();
-                        $user = User::getUserById($userId);
-                        // подставляем данные в форму
-                        $userName = $user['name'];
-                    }
                 }
+
+                // если есть товары в корзине - получаем количество товаров и общую стоимость
+                $productsIds = array_keys($productsInCart);
+                $products = Product::getProductsByIds($productsIds);
+                $totalPrice = Cart::getTotalPrice($products);
+                $totalQuantity = Cart::countProductsInCart();
+
+                $userName = false;
+                $userPhone = false;
+                $userComment = false;
+
+                // Авторизован ли пользователь?
+                if(User::Guest()){
+                    // если да - получаем данные пользователя из БД по id
+                    $userId = User::checkLogged();
+                    $user = User::getUserById($userId);
+                    // подставляем данные в форму
+                    $userName = $user['name'];
+                } else {
+                    // если нет - форма пустая
+                    $userId = false;
+                }
+
             }
 
             require_once (ROOT.DS.'views'.DS.'cart'.DS.'checkout.php');
             return true;
         }
+
     }
