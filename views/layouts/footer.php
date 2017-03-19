@@ -1,8 +1,9 @@
-<footer id="footer"><!--Footer-->
+<footer id="footer" style="position: fixed; left: 0; bottom: 0; width: 100%;"><!--Footer-->
     <div class="footer-bottom" style="width: 100%;">
         <div class="container">
             <div class="row">
                 <p class="pull-left">Все права защищены &copy; <?=date('Y')?></p>
+                <p class="pull-right" style="color: red; font-size: 30px;"><b>Сайт создан в ознакомительных целях!</b></p>
             </div>
         </div>
     </div>

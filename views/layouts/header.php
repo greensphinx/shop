@@ -26,7 +26,9 @@
 
 <body>
 <header id="header"><!--header-->
-
+    <div id="info" style="background-color: red; width: 100%; height: auto; text-align: center; font-size: 30px; color: green;">
+        <p><b>Сайт создан в ознакомительных целях!</b></p>
+    </div>
 
     <div class="header-middle"><!--header-middle-->
         <div class="container">
