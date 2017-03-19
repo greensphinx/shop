@@ -14,12 +14,17 @@
             $products = Category::getProductsByCategoryAlias($category_alias, $page);
 
             // кол-во товаров в категории
-            //$total = Product::getTotalProductsInCategory($category_id);
+            $total = Product::getTotalProductsInCategory($category_alias);
 
-           //$pagination = new Pagination($total, $page, Product::LIMIT_PAGES, 'page-');
+            $pagination = new Pagination($total, $page, Product::LIMIT_PAGES, 'page-');
+
+//            $categoryProducts = [];
+//            $categoryProducts = Category::getProductsByCategoryId($category_id);
 
             require_once (ROOT.DS.'views'.DS.'category'.DS.'index.php');
 
             return true;
         }
+
+
     }

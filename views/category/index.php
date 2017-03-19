@@ -51,6 +51,7 @@
                     <div style="clear: both"></div>
 
                     <!-- пагинатор-->
+                    <?=$pagination->get();?>
 
                 </div><!--features_items-->
             </div>

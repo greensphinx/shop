@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
 }
 
-.btn:hover, 
+.btn:hover,
 .btn:focus{
   outline: none;
   box-shadow: none;
@@ -134,11 +134,6 @@ a#scrollUp i{
 
 .fa-google-plus:hover  {
 	background:#CE3C2D;
-}
-
-.header-middle
-{
-  position: fixed !important;
 }
 
 .header-middle .container .row {
@@ -276,7 +271,7 @@ a#scrollUp i{
 
 /*  Dropdown menu*/
 
-.navbar-header 
+.navbar-header
 .navbar-toggle .icon-bar {
     background-color: #fff;
 }
@@ -329,7 +324,7 @@ ul.sub-menu {
 }
 
 .fa-angle-down{
-  padding-left: 5px; 
+  padding-left: 5px;
 }
 
 @-webkit-keyframes fadeInUp {
@@ -345,13 +340,14 @@ ul.sub-menu {
     transform: translateY(0);
   }
 }
-  
+
 /*************************
 *******Footer CSS******
 **************************/
 
 #footer {
   background: #C4D1D9;
+  height: 50px;
 }
 
 
@@ -536,7 +532,7 @@ ul.sub-menu {
   font-size: 20px;
 }
 
-.searchform  button:hover, 
+.searchform  button:hover,
 .searchform  button:focus{
 	background-color:#06A5FF;
 }
@@ -550,8 +546,13 @@ ul.sub-menu {
 }
 
 .footer-bottom {
-  background: #D6D6D0;
-  padding-top: 10px;
+  /*background: #D6D6D0;*/
+  /*padding-top: 10px;*/
+  /*width: 100%;*/
+  /*padding-bottom: 2px;*/
+  /*position: fixed;*/
+  padding-top: 15px;
+
 }
 
 .footer-bottom p {
@@ -754,10 +755,6 @@ h2.title:before{
   border-top: 0 none;
 }
 
-/*.panel-heading*/
-/*{*/
-  /*position: fixed !important;*/
-/*}*/
 
 .category-products .badge {
   background:none;
@@ -1677,7 +1674,7 @@ h2.title {
   font-size: 16px;
   text-align: center;
   font-family: 'Roboto',sans-serif;
-  
+
 }
 
 
@@ -1903,8 +1900,8 @@ h2.title {
 
 
 
-.shopper-info p, 
-.bill-to p, 
+.shopper-info p,
+.bill-to p,
 .order-message p {
   color: #696763;
   font-size: 20px;
@@ -1927,9 +1924,9 @@ h2.title {
 }
 
 
-.shopper-info > form > input, 
-.form-two > form > select, 
-.form-two > form > input, 
+.shopper-info > form > input,
+.form-two > form > select,
+.form-two > form > input,
 .form-one > form > input {
   background:#F0F0E9;
   border: 0 none;
@@ -1984,27 +1981,27 @@ h2.title {
   margin-right: 30px;
 }
 
-#cart_items .cart_info 
+#cart_items .cart_info
 .table.table-condensed.total-result {
   margin-bottom: 10px;
   margin-top: 35px;
   color: #696763
 }
 
-#cart_items .cart_info 
+#cart_items .cart_info
 .table.table-condensed.total-result tr {
   border-bottom: 0
 }
 
-#cart_items .cart_info 
+#cart_items .cart_info
 .table.table-condensed.total-result span {
   color: #06A5FF;
   font-weight: 700;
   font-size: 16px
 }
 
-#cart_items .cart_info 
-.table.table-condensed.total-result 
+#cart_items .cart_info
+.table.table-condensed.total-result
 .shipping-cost {
   border-bottom: 1px solid #F7F7F0;
 }
@@ -2018,7 +2015,7 @@ h2.title {
 
 
 
-.blog-post-area 
+.blog-post-area
 .single-blog-post h3 {
   color: #696763;
   font-size: 16px;
@@ -2031,32 +2028,32 @@ h2.title {
 .single-blog-post > a {
 }
 
-.blog-post-area 
+.blog-post-area
 .single-blog-post a img {
   border: 1px solid #F7F7F0;
   width: 100%;
   margin-bottom: 30px
 }
 
-.blog-post-area  
+.blog-post-area
 .single-blog-post p {
   color: #363432
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta {
   display: block;
   margin-bottom: 25px;
   overflow: hidden;
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta ul {
   padding:0;
   display: inline;
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta ul li {
   background:#F0F0E9;
   float: left;
@@ -2067,7 +2064,7 @@ h2.title {
   position: relative;
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta ul li i {
   background:#06A5FF;
   color: #FFFFFF;
@@ -2077,7 +2074,7 @@ h2.title {
 }
 
 .sinlge-post-meta li i:after,
-.blog-post-area 
+.blog-post-area
 .post-meta ul li i:after {
   content: "";
   position: absolute;
@@ -2090,7 +2087,7 @@ h2.title {
   left:24px
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta ul span {
   float: right;
   color: #06A5FF
@@ -2105,8 +2102,8 @@ h2.title {
 }
 
 
-.blog-post-area  
-.single-blog-post 
+.blog-post-area
+.single-blog-post
 .btn-primary {
   background:#06A5FF;
   border: medium none;
@@ -2121,7 +2118,7 @@ h2.title {
   margin-top:45px
 }
 
-.pagination-area 
+.pagination-area
 .pagination li a {
   background:#F0F0E9;
   border: 0 none;
@@ -2131,9 +2128,9 @@ h2.title {
   padding: 4px 12px;
 }
 
-.pagination-area 
+.pagination-area
 .pagination li a:hover,
-.pagination-area 
+.pagination-area
 .pagination li .active {
   background:#06A5FF;
   color: #fff
@@ -2161,7 +2158,7 @@ h2.title {
   width: 57px;
 }
 
-.pager-area 
+.pager-area
 .pager li a:hover {
   background: #06A5FF;
   color: #fff
@@ -2186,7 +2183,7 @@ h2.title {
 }
 
 
-.rating-area 
+.rating-area
 .ratings li i {
   color:#CCCCCC
 }
@@ -2198,8 +2195,8 @@ h2.title {
   text-transform: uppercase;
 }
 
-.rating-area 
-.ratings .color, 
+.rating-area
+.ratings .color,
 .rating-area .color {
   color: #06A5FF
 }
@@ -2225,7 +2222,7 @@ h2.title {
 }
 
 
-.commnets 
+.commnets
 .media-object {
   margin-right: 15px;
   width: 100%;
@@ -2241,8 +2238,8 @@ h2.title {
   margin-right: 22px
 }
 
-.commnets p, 
-.response-area p, 
+.commnets p,
+.response-area p,
 .replay-box p {
   font-size: 12px
 }
@@ -2271,7 +2268,7 @@ h2.title {
 }
 
 .blog-socials ul li {
-  
+
   float: left;
   height: 17px;
   margin-right: 5px;
@@ -2294,7 +2291,7 @@ h2.title {
 }
 
 
-.media-list .btn-primary, 
+.media-list .btn-primary,
 .commnets .btn-primary {
   background:#06A5FF;
   border: 0 none;
@@ -2405,7 +2402,7 @@ h2.title {
   width: 100%;
 }
 
-.replay-box form input:hover, 
+.replay-box form input:hover,
 .text-area textarea:hover {
   border: 1px solid #06A5FF;
 }
@@ -2440,7 +2437,7 @@ h2.title {
   border-color:#06A5FF transparent transparent transparent;
   top: 25px;
   left: 5px
-} 
+}
 
 
 
@@ -2454,7 +2451,7 @@ h2.title {
   margin-bottom: 70px
 }
 
-.contact-info .heading, 
+.contact-info .heading,
 .contact-form .heading {
   text-transform: capitalize;
 }
@@ -2463,7 +2460,7 @@ h2.title {
   margin-bottom: 20px;
 }
 
-#contact-page 
+#contact-page
 .form-control::-moz-placeholder {
   color: #8D8D8D;
 }
@@ -2491,7 +2488,7 @@ h2.title {
 }
 
 
-#contact-page .form-control:focus, 
+#contact-page .form-control:focus,
 #contact-page .form-control:hover {
   box-shadow: inherit;
   border-color: #06A5FF;

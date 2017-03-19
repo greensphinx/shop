@@ -40,6 +40,14 @@
             return false;
         }
 
+        public static function checkPhone($phone)
+        {
+            if (strlen($phone) >= 10) {
+                return true;
+            }
+            return false;
+        }
+
         public static function checkEmailExist($email)
         {
             $db = Db::getConnection();
@@ -97,7 +105,6 @@
 
         public static function checkLogged()
         {
-            //session_start();
             // если сессия есть - вернём идентификатор пользователя
             if(isset($_SESSION['user'])){
                 return $_SESSION['user'];

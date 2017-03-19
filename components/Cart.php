@@ -62,4 +62,24 @@
 
             return $total;
         }
+
+        public static function clear()
+        {
+            if(isset($_SESSION['products'])){
+                unset($_SESSION['products']);
+            }
+        }
+
+        // Удаляет выбранный товар из корзины по id продукта
+        public static function deleteProduct($id)
+        {
+            // Массив с идентификаторами и количеством товаров в корзине
+            $productsInCart = self::getProducts();
+
+            // Удаляем выбранный товар из корзины
+            unset($productsInCart[$id]);
+
+            // Записываем массив товаров с удалёнными элементами в сессии
+            $_SESSION['products'] = $productsInCart;
+        }
     }

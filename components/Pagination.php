@@ -134,7 +134,7 @@
         private function amount()
         {
             // Делим и возвращаем
-            //$result = ($this->total) / ($this->limit);
-            return round($this->total);
+            return round($this->total) / ($this->limit);
+//            return round($this->total);
         }
     }

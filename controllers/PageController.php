@@ -1,7 +1,5 @@
 <?php
 
-//include_once ROOT . DS . 'models' . DS . 'Page.php';
-
 
     class PageController
     {
@@ -41,22 +39,48 @@
                 $productTv = [];
                 $productTv = Product::getProducts(5,3);
 
+                // список товаров для слайдера
+                $lastProducts = [];
+                $lastProducts = Product::getLastProductsForSlider();
+
 
                 require_once(ROOT . DS . 'views' . DS . 'page' . DS . 'index.php');
 
                 return true;
             }
 
-//        public function actionContact()
-//        {
-//            $mail = 'd_zelinsky@list.ru';
-//            $subject = 'тема письма';
-//            $message = 'Содержимое письма';
-//            $result = mail($mail, $subject, $message);
-//
-//            var_dump($result);
-//
-//            die;
-//        }
+
+            public function actionContact() {
+
+                $userEmail = '';
+                $userText = '';
+                $result = false;
+
+                if (isset($_POST['submit'])) {
+
+                    $userEmail = $_POST['userEmail'];
+                    $userText = $_POST['userText'];
+
+                    $errors = false;
+
+                    // Валидация полей
+                    if (!User::checkEmail($userEmail)) {
+                        $errors[] = 'Неправильный email';
+                    }
+
+                    if ($errors == false) {
+                        $adminEmail = 'fortestmailphp@gmail.com';
+                        $message = "Текст: {$userText}. От {$userEmail}";
+                        $subject = 'Тема письма';
+                        $result = mail($adminEmail, $subject, $message);
+                        $result = true;
+                    }
+
+                }
+
+                require_once(ROOT.DS.'views'.DS.'page'.DS.'contact.php');
+
+                return true;
+            }
 
     }

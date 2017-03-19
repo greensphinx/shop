@@ -80,15 +80,15 @@
         }
 
         // кол-во продуктов в категории
-        public static function getTotalProductsInCategory($category_id)
+        public static function getTotalProductsInCategory($alias)
         {
             $db = Db::getConnection();
 
-            $result = $db->query("SELECT COUNT(id) AS count FROM product WHERE category_id = {$category_id}");
+            $result = $db->query("SELECT COUNT(id) AS count FROM product WHERE product_type = '{$alias}'");
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $row = $result->fetch();
 
-            return $row;
+            return $row['count'];
         }
 
         public static function getProductsByIds($idsArray)
@@ -113,5 +113,122 @@
             }
 
             return $products;
+        }
+
+
+        public static function getProductsByCategoryId($id = false, $page = 1)
+        {
+            if($id){
+                $page = intval($page);
+                $offset = ($page - 1) * self::LIMIT_PAGES;
+
+                $db = Db::getConnection();
+
+                $result = $db->query("SELECT product.stock, product.id, product.product_type, product.title, product.img, product.price, category.name 
+                                  FROM product JOIN category 
+                                  ON product.category_id = category.sort_order AND category.sort_order = '{$id}' 
+                                  ORDER BY product.id ASC LIMIT " . self::LIMIT_PAGES . " OFFSET {$offset}");
+
+                $productsListCat = [];
+                $i = 0;
+                while($row = $result->fetch()){
+                    $productsListCat[$i]['stock'] = $row['stock'];
+                    $productsListCat[$i]['id'] = $row['id'];
+                    $productsListCat[$i]['product_type'] = $row['product_type'];
+                    $productsListCat[$i]['title'] = $row['title'];
+                    $productsListCat[$i]['img'] = $row['img'];
+                    $productsListCat[$i]['price'] = $row['price'];
+                    $productsListCat[$i]['name'] = $row['name'];
+
+                    $i++;
+                }
+
+                return $productsListCat;
+            }
+        }
+
+        public static function getLastProductsForSlider()
+        {
+            $db = Db::getConnection();
+
+            $result = $db->query("SELECT id, title, price, img FROM product WHERE visible = 1 ORDER BY id DESC");
+
+            $products = [];
+            $i = 0;
+            while($row = $result->fetch()){
+                $products[$i]['id'] = $row['id'];
+                $products[$i]['title'] = $row['title'];
+                $products[$i]['price'] = $row['price'];
+                $products[$i]['img'] = $row['img'];
+                $i++;
+            }
+
+            return $products;
+        }
+
+        public static function getProductsList()
+        {
+            // Соединение с БД
+            $db = Db::getConnection();
+
+            // Получение и возврат результатов
+            $result = $db->query('SELECT id, title, price, product_type FROM product ORDER BY id ASC');
+            $productsList = array();
+            $i = 0;
+            while ($row = $result->fetch()) {
+                $productsList[$i]['id'] = $row['id'];
+                $productsList[$i]['title'] = $row['title'];
+                $productsList[$i]['product_type'] = $row['product_type'];
+                $productsList[$i]['price'] = $row['price'];
+                $i++;
+            }
+            return $productsList;
+        }
+
+        // Удаляем товар по указанному id
+        public static function deleteProductById($id)
+        {
+            $db = Db::getConnection();
+
+            $sql = "DELETE FROM product WHERE id = :id";
+
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            return $result->execute();
+        }
+
+        // Добавляем товар в БД
+        public static function createProduct($options)
+        {
+            // Соединение с БД
+            $db = Db::getConnection();
+
+            // Текст запроса к БД
+            $sql = 'INSERT INTO product '
+                . '(title, features, description, price, stock, brand, keywords, img, visible,'
+                . 'product_type, category_id)'
+                . 'VALUES '
+                . '(:title, :features, :description, :price, :stock, :brand, :keywords, :img, :visible,'
+                . ':product_type, :category_id)';
+
+            // Получение и возврат результатов. Используется подготовленный запрос
+            $result = $db->prepare($sql);
+            $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
+            $result->bindParam(':features', $options['features'], PDO::PARAM_STR);
+            $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+            $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+            $result->bindParam(':stock', $options['stock'], PDO::PARAM_INT);
+            $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
+            $result->bindParam(':keywords', $options['keywords'], PDO::PARAM_STR);
+            $result->bindParam(':img', $options['img'], PDO::PARAM_STR);
+            $result->bindParam(':visible', $options['visible'], PDO::PARAM_INT);
+            $result->bindParam(':product_type', $options['product_type'], PDO::PARAM_STR);
+            $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
+            if ($result->execute()) {
+                // Если запрос выполенен успешно, возвращаем id добавленной записи
+                return $db->lastInsertId();
+            }
+            // Иначе возвращаем 0
+            return 0;
         }
     }

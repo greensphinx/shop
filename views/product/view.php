@@ -60,6 +60,23 @@
                     </div>
                 </div><!--/product-details-->
 
+                <!-- Отзывы -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Оставить отзыв:</h3>
+                        <form action="" method="post">
+                                <label for="like"><p  class="fa fa-thumbs-up" style="color: #06A5FF"><b>Рекомендую</b></p></label>
+                                <input type="radio" id="like" name="rating" value="like">
+                                <br>
+                                <label for="dislike"><p  class="fa fa-thumbs-down" style="color: red;"><b>Не рекомендую</b></p></label>
+                                <input type="radio" id="dislike" name="rating" value="dislike"><br>
+
+                            <textarea name="comment" id="" rows="10" class="form-control" placeholder="Ваш комментарий"></textarea><br>
+                            <button class="btn btn-primary btn-lg btn-block">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
