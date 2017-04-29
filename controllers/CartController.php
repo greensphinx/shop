@@ -91,7 +91,7 @@
 
                         // Отправляем письмо администратору о новом заказе
                         $adminEmail = 'fortestmailphp@gmail.com';
-                        $message = 'message from CartController, actionCheckout(тут будет ссылка на административный раздел)';
+                        $message = 'You have a new message (тут будет ссылка на административный раздел, когда сайт уже на хостинге)';
                         $subject = 'Новый заказ.';
                         mail($adminEmail, $subject, $message);
 

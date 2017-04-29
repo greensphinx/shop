@@ -60,19 +60,48 @@
                     </div>
                 </div><!--/product-details-->
 
+                <?php
+//                    var_dump($rating);
+                    if($rating){
+                        echo "<h4>Рейтинг товара: ". $rating[0]['rating'] ."</h4>";
+                    }
+                ?>
+
                 <!-- Отзывы -->
                 <div class="row">
                     <div class="col-sm-12">
+                        <?php
+                            if($comments){
+                                echo "<h4>Комментарии:</h4>";
+                                foreach($comments as $comment) :
+                                    ?>
+                                    <div class="row">
+                                        <!-- иногда стили не отрабатывают, задал здесь как привилегию№1 -->
+                                        <div class="myCommnets" style="border: 1px solid #06A5FF;
+                                                                          border-radius: 5px;
+                                                                          margin-bottom: 10px;
+                                                                          padding: 7px;">
+                                            <h4><b><?=$comment['name']?></b>:</h4>
+
+                                            <p><?= $comment['comment'] ?></p>
+                                            <p><?= $comment['date'] ?></p>
+                                        </div>
+                                    </div>
+                                    <?php
+                                endforeach;
+                            }
+                        ?>
+
                         <h3>Оставить отзыв:</h3>
                         <form action="" method="post">
                                 <label for="like"><p  class="fa fa-thumbs-up" style="color: #06A5FF"><b>Рекомендую</b></p></label>
-                                <input type="radio" id="like" name="rating" value="like">
+                                <input type="radio" id="like" name="rating" value="1">
                                 <br>
                                 <label for="dislike"><p  class="fa fa-thumbs-down" style="color: red;"><b>Не рекомендую</b></p></label>
-                                <input type="radio" id="dislike" name="rating" value="dislike"><br>
+                                <input type="radio" id="dislike" name="rating" value="0"><br>
 
                             <textarea name="comment" id="" rows="10" class="form-control" placeholder="Ваш комментарий"></textarea><br>
-                            <button class="btn btn-primary btn-lg btn-block">Отправить</button>
+                            <input type="submit" name="submit" value="Отправить" class="btn btn-primary btn-lg btn-block">
                         </form>
                     </div>
                 </div>

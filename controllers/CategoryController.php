@@ -16,9 +16,6 @@
 
             $pagination = new Pagination($total, $page, Product::LIMIT_PAGES, 'page-');
 
-//            $categoryProducts = [];
-//            $categoryProducts = Category::getProductsByCategoryId($category_id);
-
             require_once (ROOT.DS.'views'.DS.'category'.DS.'index.php');
 
             return true;

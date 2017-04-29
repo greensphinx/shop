@@ -61,7 +61,7 @@
             $id = intval($id);
             $db = Db::getConnection();
 
-            $result = $db->query("SELECT id, title, features, description, brand, price, stock, img FROM product WHERE id = '{$id}'");
+            $result = $db->query("SELECT id, title, features, description, brand, price, stock, img, visible, category_id FROM product WHERE id = '{$id}'");
 
             $oneProduct = [];
             $i = 0;
@@ -74,6 +74,8 @@
                 $oneProduct[$i]['price'] = $row['price'];
                 $oneProduct[$i]['stock'] = $row['stock'];
                 $oneProduct[$i]['img'] = $row['img'];
+                $oneProduct[$i]['visible'] = $row['visible'];
+                $oneProduct[$i]['category_id'] = $row['category_id'];
                 $i++;
             }
             return $oneProduct;
@@ -91,6 +93,7 @@
             return $row['count'];
         }
 
+        // получаем массив (список товаров) с нужными идентификаторами
         public static function getProductsByIds($idsArray)
         {
             $products = [];
@@ -168,7 +171,6 @@
 
         public static function getProductsList()
         {
-            // Соединение с БД
             $db = Db::getConnection();
 
             // Получение и возврат результатов
@@ -198,6 +200,7 @@
         }
 
         // Добавляем товар в БД
+        // Возвращает ID последнего добавленного товара
         public static function createProduct($options)
         {
             // Соединение с БД
@@ -205,10 +208,10 @@
 
             // Текст запроса к БД
             $sql = 'INSERT INTO product '
-                . '(title, features, description, price, stock, brand, keywords, img, visible,'
+                . '(title, features, description, price, stock, brand, keywords, visible,'
                 . 'product_type, category_id)'
                 . 'VALUES '
-                . '(:title, :features, :description, :price, :stock, :brand, :keywords, :img, :visible,'
+                . '(:title, :features, :description, :price, :stock, :brand, :keywords, :visible,'
                 . ':product_type, :category_id)';
 
             // Получение и возврат результатов. Используется подготовленный запрос
@@ -220,7 +223,7 @@
             $result->bindParam(':stock', $options['stock'], PDO::PARAM_INT);
             $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
             $result->bindParam(':keywords', $options['keywords'], PDO::PARAM_STR);
-            $result->bindParam(':img', $options['img'], PDO::PARAM_STR);
+            //$result->bindParam(':img', $options['img'], PDO::PARAM_STR);
             $result->bindParam(':visible', $options['visible'], PDO::PARAM_INT);
             $result->bindParam(':product_type', $options['product_type'], PDO::PARAM_STR);
             $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
@@ -232,8 +235,69 @@
             return 0;
         }
 
-        public static function updateProductById($id)
+        // Имя фото и id продукта
+        public static function addImage($imgName, $id)
         {
+            $db = Db::getConnection();
 
+            $sql = "UPDATE product SET img = '{$imgName}' WHERE id = {$id}";
+            $result = $db->query($sql);
+            return $result;
+        }
+
+
+        // Редактирует товар с заданным id
+        public static function updateProductById($id, $options)
+        {
+//            var_dump($options);
+            $db = Db::getConnection();
+
+            $sql = "UPDATE product SET 
+                                    title = :title, 
+                                    features = :features, 
+                                    description = :description, 
+                                    price = :price, 
+                                    stock = :stock, 
+                                    brand = :brand, 
+                                    visible = :visible, 
+                                    product_type = :product_type, 
+                                    category_id = :category_id 
+                                    WHERE 
+                                    id = :id";
+
+            // Получение и возврат результатов. Используется подготовленный запрос
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
+            $result->bindParam(':features', $options['features'], PDO::PARAM_STR);
+            $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+            $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+//            $result->bindParam(':img', $options['img'], PDO::PARAM_STR);
+            $result->bindParam(':stock', $options['stock'], PDO::PARAM_INT);
+            $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
+//            $result->bindParam(':keywords', $options['keywords'], PDO::PARAM_STR);
+            $result->bindParam(':visible', $options['visible'], PDO::PARAM_INT);
+            $result->bindParam(':product_type', $options['product_type'], PDO::PARAM_STR);
+            $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
+            return $result->execute();
+        }
+
+        // Возвращает путь к изображению
+        public static function getImage($id)
+        {
+            // Если нет фото
+            $noImage = 'no-image.jpg';
+
+            // Путь к папке с товарами
+            $path = '/uploads/';
+
+            // Путь к изображению товара
+            $pathToProductImage = $path . $id . '.jpg';
+
+            if (file_exists($_SERVER['DOCUMENT_ROOT'].$pathToProductImage)) {
+                return $pathToProductImage;
+            }
+
+            return $path . $noImage;
         }
     }

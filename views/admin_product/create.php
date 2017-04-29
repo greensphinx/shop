@@ -48,7 +48,7 @@
                         <p>Стоимость, грн.</p>
                         <input type="text" name="price" placeholder="" value="">
 
-                        <p>Категория</p>
+                        <p>ID Категории</p>
                         <select name="category_id">
                             <?php if (is_array($categoriesList)): ?>
                                 <?php foreach ($categoriesList as $category): ?>
@@ -62,13 +62,10 @@
                         <br/><br/>
 
                         <p>Производитель</p>
-                        <input type="text" name="brand" placeholder="" value="">
+                        <input type="text" name="brand" placeholder="Брэнд" value="">
 
                         <p>Изображение товара</p>
                         <input type="file" name="image" placeholder="" value="">
-
-                        <p>Сылка на фото</p>
-                        <textarea name="img"></textarea>
 
                         <p>Краткие характеристики</p>
                         <textarea name="features"></textarea>

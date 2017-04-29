@@ -1,4 +1,4 @@
-<footer id="footer" style="position: fixed; left: 0; bottom: 0; width: 100%;"><!--Footer-->
+<footer id="footer" style="position: fixed; left: 0; bottom: 0; width: 100%; display: none;"><!--Footer-->
     <div class="footer-bottom" style="width: 100%;">
         <div class="container">
             <div class="row">
@@ -20,7 +20,7 @@
 <script src="/templates/js/jquery.prettyPhoto.js"></script>
 <script src="/templates/js/main.js"></script>
 <script>
-    $(document).click(function () {
+    $(function () {
         $(".add-to-cart").click( function () {
             var id = $(this).attr("data-id");
             $.post("/cart/addAjax/"+id, {}, function (data) {
@@ -29,6 +29,17 @@
             return false;
         });
     });
+
+
+//    $(document).click(function () {
+//        $(".add-to-cart").click( function () {
+//            var id = $(this).attr("data-id");
+//            $.post("/cart/addAjax/"+id, {}, function (data) {
+//                $("#cart-count").html(data);
+//            });
+//            return false;
+//        });
+//    });
 </script>
 </body>
 </html>

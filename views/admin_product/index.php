@@ -13,6 +13,7 @@
                 </ol>
             </div>
 
+
             <a href="/admin/product/create" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить товар</a>
 
             <h4>Список товаров</h4>

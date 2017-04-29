@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta http-equiv="Cache-Control" content="private">
     <title>Главная</title>
     <link href="/templates/css/bootstrap.min.css" rel="stylesheet">
     <link href="/templates/css/font-awesome.min.css" rel="stylesheet">
@@ -26,9 +27,9 @@
 
 <body>
 <header id="header"><!--header-->
-    <div id="info" style="background-color: red; width: 100%; height: auto; text-align: center; font-size: 30px; color: green;">
-        <p><b>Сайт создан в ознакомительных целях!</b></p>
-    </div>
+<!--    <div id="info" style="background-color: red; width: 100%; height: auto; text-align: center; font-size: 30px; color: green;">-->
+<!--        <p><b>Сайт создан в ознакомительных целях!</b></p>-->
+<!--    </div>-->
 
     <div class="header-middle"><!--header-middle-->
         <div class="container">
@@ -38,8 +39,14 @@
                         <a href="/"><img src="/uploads/logo/logo.png" alt="" /></a>
                     </div>
                 </div>
+                </div>
                 <div class="col-sm-8">
+                    <form method="post" action="" class="search_field">
+                        <input type="text" name="search" id="search_box">
+                        <input type="submit" value="Поиск" id="search_button">
+                    </form>
                     <div class="shop-menu pull-right">
+<!--                        <input type="text" style="float: left">-->
                         <ul class="nav navbar-nav">
                             <?php if(User::Guest()) { ?>
                             <li><a href="/user/login/"><i class="fa fa-lock"></i> Вход</a></li>
@@ -55,7 +62,42 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+
+
+            <?php
+            if (isset($_POST['search']) && !empty($_POST['search'])) {
+
+                $db = Db::getConnection();
+                $word = htmlspecialchars($_POST['search'], ENT_QUOTES);
+                $word = preg_replace('/ +/', ' ', $word);
+                $sql = "SELECT id, title FROM product WHERE title LIKE '%" . $word . "%' ESCAPE ' ' ORDER BY title LIMIT 10";
+                $row = $db->query($sql);
+
+                if(count($row)) {
+                    $end_result = '';
+                    foreach($row as $r) {
+                        $result         = $r['title'];
+                        $bold           = '<span class="found">' . $word . '</span>';
+                        $end_result     .= '<li><a href="/product/' . $r['id'] . '">' . str_ireplace($word, $bold, $result) . '</a></li>';
+                    }
+                    ?>
+                    <div id='results_field'>
+                        <div id="searchresults">Результаты по Вашему запросу: <span class="word"></span></div>
+                        <ul id="results" class="update_">
+                            <?=$end_result?>
+                        </ul>
+                    </div>
+                    <?php
+                } else {
+            ?>
+                    <div id='results_field'>
+                        <div id="searchresults">По вашему запросу ничего не найдено</div>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+
         </div>
     </div><!--/header-middle-->
 
@@ -76,14 +118,19 @@
                             <li><a href="/">Главная</a></li>
                             <li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="/catalog/">Каталог товаров</a></li>
+                                    <!-- На место списков можно поставить что угодно -->
+                                    <li><a href="">Список 1(not active)</a></li>
+                                    <li><a href="">Список 2(not active)</a></li>
+                                    <li><a href="">Список 3(not active)</a></li>
                                     <li><a href="/cart/">Корзина</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/about/">О магазине</a></li>
+<!--                            <li><a href="">О магазине</a></li>-->
                             <li><a href="/contacts/">Контакты</a></li>
                         </ul>
                     </div>
+
+
                 </div>
             </div>
         </div>

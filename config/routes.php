@@ -21,6 +21,7 @@ return array(
     'accaunt' => 'accaunt/index',
 
     'contacts' => 'page/contact',
+//    'comment/AddComment/([0-9]+)' => 'comment/addComment/$1',
 
     // управление категориями
     'admin/category/create' => 'adminCategory/create', // create
@@ -35,13 +36,16 @@ return array(
     'admin/product' => 'adminProduct/index', // read
 
     // управление заказами
-    'admin/order/create' => 'adminOrder/create', // create
+//    'admin/order/create' => 'adminOrder/create', // create
     'admin/order/update/([0-9]+)' => 'adminOrder/update/$1', // update
     'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1', // delete
+    'admin/order/view/([0-9]+)' => 'adminOrder/view/$1',
     'admin/order' => 'adminOrder/index', // read
 
     // админпанель
     'admin' => 'admin/index', // actionIndex in AdminController
+
+//    'search' => 'page/search',
 
     '' => 'page/index', // actionIndex в PageController
     

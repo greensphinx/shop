@@ -99,4 +99,99 @@
 
             return $categoryList;
         }
+
+        // Добавляет новую категорию
+        public static function createCategory($name, $sortOrder, $status)
+        {
+            // Соединение с БД
+            $db = Db::getConnection();
+
+            // Текст запроса к БД
+            $sql = 'INSERT INTO category (name, sort_order, status) '
+                . 'VALUES (:name, :sort_order, :status)';
+
+            // Получение и возврат результатов. Используется подготовленный запрос
+            $result = $db->prepare($sql);
+            $result->bindParam(':name', $name, PDO::PARAM_STR);
+            $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
+            $result->bindParam(':status', $status, PDO::PARAM_INT);
+            return $result->execute();
+        }
+
+        // Возвращает категорию с указанным id
+        public static function getCategoryById($id)
+        {
+            // Соединение с БД
+            $db = Db::getConnection();
+
+            // Текст запроса к БД
+            $sql = 'SELECT * FROM category WHERE id = :id';
+
+            // Используется подготовленный запрос
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+            // Указываем, что хотим получить данные в виде массива
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+
+            // Выполняем запрос
+            $result->execute();
+
+            // Возвращаем данные
+            return $result->fetch();
+        }
+
+        // Возвращает текстое пояснение статуса для категории
+        public static function getStatusText($status)
+        {
+            switch ($status) {
+                case '1':
+                    return 'Отображается';
+                    break;
+                case '0':
+                    return 'Скрыта';
+                    break;
+            }
+        }
+
+        // Редактирование категории с заданным id
+        public static function updateCategoryById($id, $name, $alias, $sortOrder, $status)
+        {
+            // Соединение с БД
+            $db = Db::getConnection();
+
+            // Текст запроса к БД
+            $sql = "UPDATE category
+            SET 
+                name = :name,
+                alias = :alias,
+                sort_order = :sort_order, 
+                status = :status
+            WHERE id = :id";
+
+            // Получение и возврат результатов. Используется подготовленный запрос
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result->bindParam(':name', $name, PDO::PARAM_STR);
+            $result->bindParam(':alias', $alias, PDO::PARAM_STR);
+            $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
+            $result->bindParam(':status', $status, PDO::PARAM_INT);
+            return $result->execute();
+        }
+
+        // Удаляет категорию с заданным id
+        public static function deleteCategoryById($id)
+        {
+            // Соединение с БД
+            $db = Db::getConnection();
+
+            // Текст запроса к БД
+            $sql = 'DELETE FROM category WHERE id = :id';
+
+            // Получение и возврат результатов. Используется подготовленный запрос
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            return $result->execute();
+        }
+
     }

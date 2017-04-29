@@ -35,6 +35,7 @@
                 // если ошибок нет - сохраняем пользователя
                 if($errors == false){
                     $result = User::register($name, $email, $password);
+
                 }
             }
 
@@ -83,8 +84,7 @@
         // удаляем сессию, перенаправляем на главную
         public function actionLogout()
         {
-            //session_start();
-            unset($_SESSION["user"]);
+            session_destroy();
             header("Location: /");
         }
     }

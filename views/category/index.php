@@ -11,7 +11,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a href="/category/<?=$category['alias']?>" class="<?php if($category_alias == $category['alias']) echo "active"; ?>"><?=$category['name']?></a></h4>
+                                        <a href="/category/<?=$category['alias']?>" class="<?php if($category_alias == $category['alias']) echo "active"; ?>" id="category_hover"><?=$category['name']?></a></h4>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -24,6 +24,8 @@
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
+
+
 
                     <h2 class="title text-center">Товары</h2>
                     <?php foreach ($products as $product) : ?>
@@ -51,8 +53,8 @@
                     <div style="clear: both"></div>
 
                     <!-- пагинатор-->
-                    <?=$pagination->get();?>
 
+                    <?= $pagination->get();?>
                 </div><!--features_items-->
             </div>
         </div>

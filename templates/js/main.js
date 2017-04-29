@@ -28,3 +28,56 @@ $(document).ready(function(){
 		});
 	});
 });
+
+$(function () {
+    $("#search_button").click(function() {
+        var searchString    = $("#search_box").val();
+        var data            = 'search='+ searchString;
+        if(searchString) {
+            $.ajax({
+                type: "POST",
+                url: "",
+                data: data,
+                beforeSend: function(html) {
+                    $("#results").html('');
+                    $("#searchresults").show();
+                    $(".word").html(searchString);
+                },
+                success: function(html){
+                    $("#results").show();
+                    $("#results").append(html);
+                }
+            });
+        }
+        return false;
+    });
+});
+
+$(document).ready(function(){
+    $(".add-to-cart").click(function () {
+        var id = $(this).attr("data-id");
+        $.post("/cart/addAjax/"+id, {}, function (data) {
+            $("#cart-count").html(data);
+        });
+        return false;
+    });
+});
+
+
+// $(function () {
+//     $("#search_button").click(function(){
+//         var searchString    = $("#search_box").val();
+//
+//         if(searchString){
+//         	$.ajax({
+//                 type: "POST",
+//                 url: "",
+//                 data: data,
+//                 success: function(response){
+//                 	$("#results_field").html(response);
+// 				}
+// 			});
+// 		}
+// 	});
+//
+// });

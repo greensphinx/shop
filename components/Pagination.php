@@ -47,7 +47,7 @@
             for($page = $limits[0]; $page <= $limits[1]; $page++){
                 // если текущая страница, ссылки нет и добавляется класс active
                 if($page == $this->current_page){
-                    $links .= '<li class="active"><a href="#">'.$page.'</a></li>';
+                    $links .= '<li class="active"><a href="#">' . $page . '</a></li>';
                 } else {
                     // иначе генерируем ссылку
                     $links .= $this->generateHtml($page);
@@ -59,13 +59,15 @@
                 // если текущая стр не первая
                 if($this->current_page > 1){
                     // создаём ссылку на первую
-                    $links = $this->generateHtml(1, '&lt').$links;
+                    $previous_page = $this->current_page - 1;
+                    $links = $this->generateHtml($previous_page, '&lt') . $links;
                 }
 
                 // если текущая стр не первая
                 if($this->current_page < $this->amount){
                     // создайм ссылку на последнюю
-                    $links .= $this->generateHtml($this->amount, '&gt');
+                    $next_page = $this->current_page + 1;
+                    $links .= $this->generateHtml($next_page, '&gt');
                 }
             }
 
@@ -86,7 +88,7 @@
             $currentURI = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
             $currentURI = preg_replace('~/page-[0-9]+~', '', $currentURI);
             // формируем html ссылки и возвращаем
-            return '<li><a href="'.$currentURI.$this->index.$page.'">'.$text.'</a></li>';
+            return '<li><a href="' . $currentURI . $this->index . $page . '">' . $text . '</a></li>';
         }
 
         private function limits()
@@ -105,7 +107,7 @@
                 // Конец - общее количество страниц
                 $end = $this->amount;
 
-                # Начало - минус $this->max от конца
+                // Начало - минус $this->max от конца
                 $start = $this->amount - $this->max > 0 ? $this->amount - $this->max : 1;
             }
 
@@ -134,7 +136,6 @@
         private function amount()
         {
             // Делим и возвращаем
-            return round($this->total) / ($this->limit);
-//            return round($this->total);
+            return ceil($this->total / $this->limit);
         }
     }

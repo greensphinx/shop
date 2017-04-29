@@ -30,6 +30,7 @@ class Router
             if (preg_match("~$uriPattern~", $uri)) {
                 
                 // Получаем внутренний путь из внешнего согласно правилу.
+                // исп. ~ т.к. в пути может встречаться /
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
                                 
                 // Определить контроллер, action, параметры

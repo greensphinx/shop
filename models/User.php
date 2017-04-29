@@ -89,13 +89,11 @@
 
         public static function auth($userId)
         {
-            //session_start();
             $_SESSION['user'] = $userId;
         }
 
         public static function Guest()
         {
-            //session_start();
             if(isset($_SESSION['user'])){
                 return false;
             } else {
